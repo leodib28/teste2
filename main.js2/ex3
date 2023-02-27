@@ -1,0 +1,40 @@
+function calcularFaturamento(vetorFaturamento) {
+    // Inicializa as variáveis para o menor e maior valores de faturamento
+    let menorFaturamento = vetorFaturamento[0];
+    let maiorFaturamento = vetorFaturamento[0];
+    
+    // Calcula a média mensal de faturamento
+    let totalFaturamento = 0;
+    for (let i = 0; i < vetorFaturamento.length; i++) {
+      totalFaturamento += vetorFaturamento[i];
+      
+      // Atualiza o menor e maior valores de faturamento, se necessário
+      if (vetorFaturamento[i] < menorFaturamento) {
+        menorFaturamento = vetorFaturamento[i];
+      }
+      if (vetorFaturamento[i] > maiorFaturamento) {
+        maiorFaturamento = vetorFaturamento[i];
+      }
+    }
+    let mediaMensal = totalFaturamento / vetorFaturamento.length;
+    
+    // Calcula o número de dias com faturamento acima da média
+    let diasAcimaMedia = 0;
+    for (let i = 0; i < vetorFaturamento.length; i++) {
+      if (vetorFaturamento[i] > mediaMensal) {
+        diasAcimaMedia++;
+      }
+    }
+    
+    // Retorna as informações calculadas como um objeto
+    return {
+      menorFaturamento: menorFaturamento,
+      maiorFaturamento: maiorFaturamento,
+      diasAcimaMedia: diasAcimaMedia
+    };
+  }
+
+  let vetorFaturamento = [100, 50, 80, 120, 90];
+let resultado = calcularFaturamento(vetorFaturamento);
+console.log(resultado);
+  
